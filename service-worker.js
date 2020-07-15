@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/hirecoachadmin/precache-manifest.385d34205170e3f1f0c24c803acce8ed.js"
+  "/hirecoachadmin/precache-manifest.8eb53dac8834993698e1744e8015b9e9.js"
 );
 
 self.addEventListener('message', (event) => {
