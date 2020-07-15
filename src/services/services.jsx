@@ -46,10 +46,10 @@ export const UPLOAD_FILE = gql`
 `;
 
 const ServiceAdd = () => {
-  const [previewImage, setpreviewImage] = useState();
-  const [newfile, setFile] = useState();
-  const [serviceName, setserviceName] = useState();
-  const [categoryName, setcategoryName] = useState();
+  const [previewImage, setpreviewImage] = useState("");
+  const [newfile, setFile] = useState("");
+  const [serviceName, setserviceName] = useState("");
+  const [categoryName, setcategoryName] = useState("");
 
   const [reloadService, setReloadService] = useState(false);
 
@@ -131,11 +131,21 @@ const ServiceAdd = () => {
     }
   }
 
+  if (categoryLoading) {
+    return (
+      <div className="row mt-5">
+        <div className="col-12 text-center text-primary mt-5 p-5 font-weight-bold h5">
+          Hold on, services are loading ...
+        </div>
+      </div>
+    );
+  }
+
   if (categorydata) {
     return (
       <div className="row">
         <div className="col-6 align-self-center p-5">
-          <div className="row p-4 bg-green box-shadow rounded">
+          <div className="row p-4 bg-green box-shadow rounded animated fadeInUp">
             <div className="col-12 p-0">
               <div className="row">
                 <div className="col-12 align-self-center">
@@ -186,9 +196,19 @@ const ServiceAdd = () => {
                   <div className="col-6 text-right">
                     {addServiceLoading || uploadOneFileLoading ? (
                       "Adding service ..."
+                    ) : previewImage === "" ||
+                      serviceName === "" ||
+                      categoryName === "" ? (
+                      <div
+                        className="bg-primary text-white rounded-0 d-inline-block px-4 py-2 cursor-pointer"
+                        disabled="disabled"
+                      >
+                        Please fill all fields
+                      </div>
                     ) : (
                       <div
                         className="bg-primary text-white rounded-0 d-inline-block px-4 py-2 cursor-pointer"
+                        disabled="disabled"
                         onClick={uploadFile}
                       >
                         Add service
@@ -212,3 +232,8 @@ const ServiceAdd = () => {
 };
 
 export default ServiceAdd;
+
+// const [previewImage, setpreviewImage] = useState("");
+// const [newfile, setFile] = useState("");
+// const [serviceName, setserviceName] = useState("");
+// const [categoryName, setcategoryName] = useState("");

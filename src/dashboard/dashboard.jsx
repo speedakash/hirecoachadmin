@@ -80,6 +80,15 @@ const Dashboard = () => {
       countTask[i] = (countTask[i] || 0) + 1;
     });
   }
+  if (userLoader || taskLoader) {
+    return (
+      <div className="row mt-5">
+        <div className="col-12 text-center text-primary mt-5 p-5 font-weight-bold h5">
+          Wait a minute Admin, give me some time to get ready ....
+        </div>
+      </div>
+    );
+  }
 
   if (userData && taskData) {
     const totalConsumer = userData.users.filter((el) => {

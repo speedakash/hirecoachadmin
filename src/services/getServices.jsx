@@ -59,6 +59,16 @@ const GetALLServices = (props) => {
     }
   }, [props.reloadService]);
 
+  if (loading) {
+    return (
+      <div className="row mt-5">
+        <div className="col-12 text-center text-primary mt-5 p-5 font-weight-normal h6">
+          Services are still loading... , meanwhile you can add new service
+        </div>
+      </div>
+    );
+  }
+
   if (data) {
     return (
       <div className="row m-0 overflow-y-only vertical-height-100">
@@ -93,16 +103,6 @@ const GetALLServices = (props) => {
                     {el.status === "active" ? "Deactive" : "Activate"}
                   </p>
                 </div>
-                {/* <div className="col-2 p-2">
-                  <p
-                    className={`cursor-pointer text-center font-weight-normal m-0 ln-40 ${
-                      el.status === "active" ? "text-pink" : "text-green"
-                    }`}
-                    onClick={() => changeStatus(el)}
-                  >
-                    {el.status === "active" ? "Deactive" : "Active"}
-                  </p>
-                </div> */}
               </div>
             );
           })}

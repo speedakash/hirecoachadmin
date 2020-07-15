@@ -80,6 +80,15 @@ const ConsumerData = () => {
     setShowModal(true);
     setSelectedProvider(provider);
   };
+  if (loading) {
+    return (
+      <div className="row mt-5">
+        <div className="col-12 text-center text-primary mt-5 p-5 font-weight-bold h5">
+          hey Admin wait some time, our providers are punctual here ...
+        </div>
+      </div>
+    );
+  }
 
   if (data) {
     return (

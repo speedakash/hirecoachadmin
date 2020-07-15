@@ -82,6 +82,16 @@ const ConsumerData = () => {
     setSelectedConsumer(consumer);
   };
 
+  if (loading) {
+    return (
+      <div className="row mt-5">
+        <div className="col-12 text-center text-primary mt-5 p-5 font-weight-bold h5">
+          Hey Admin, consumers are on their way ....
+        </div>
+      </div>
+    );
+  }
+
   if (data) {
     return (
       <div className="row m-0 p-4">
@@ -152,9 +162,13 @@ const ConsumerData = () => {
                     />
                   </div>
                 </div>
-                <div className="col-2 p-2 ln-40">{el.name}</div>
-                <div className="col-2 p-2 ln-40">{el.email}</div>
-                <div className="col-3 p-2 ln-40">
+                <div className="col-2 p-2 ln-40 white-space-nowrap text-truncate">
+                  {el.name}
+                </div>
+                <div className="col-2 p-2 ln-40 white-space-nowrap text-truncate">
+                  {el.email}
+                </div>
+                <div className="col-3 p-2 ln-40 white-space-nowrap text-truncate">
                   {el.locality}, {el.city}, {el.state}
                 </div>
                 <div className="col-2 p-2">
