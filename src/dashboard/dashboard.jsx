@@ -40,12 +40,7 @@ const Dashboard = () => {
   const [
     getAllUsers,
     { loading: userLoader, data: userData, error: userError },
-  ] = useLazyQuery(FETCH_ALL_USERS, {
-    fetchPolicy: "cache-and-network",
-    variables: {
-      role: "consumer",
-    },
-  });
+  ] = useLazyQuery(FETCH_ALL_USERS);
 
   let userMonthArray = [];
   let countUser = {};
