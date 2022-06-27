@@ -11,6 +11,8 @@ import ConsumerData from "../consumer/consumer";
 import ProviderData from "../provider/provider";
 import Dashboard from "../dashboard/dashboard";
 import ServiceAdd from "../services/services";
+import CategoryAdd from "../category/category";
+import TasksData from "../task/tasks";
 import { Tooltip, OverlayTrigger } from "react-bootstrap";
 
 import DashBoardImage from "../assets/images/dashboard.png";
@@ -18,6 +20,7 @@ import ConsumerImage from "../assets/images/consumer.png";
 import ProviderImage from "../assets/images/provider.png";
 import ServicesImage from "../assets/images/services.png";
 import CategoryImage from "../assets/images/category.png";
+import TaskImage from "../assets/images/tasks.png";
 import Logo from "../assets/images/logoCopy.jpg";
 
 const RouterAdmin = () => {
@@ -145,6 +148,24 @@ const RouterAdmin = () => {
                   </OverlayTrigger>
                 </NavLink>
               </div>
+              <div className="pl-0 pr-2 py-1 p-sm-2 d-inline-block navLink d-sm-block text-sm-left">
+                <NavLink
+                  to="/tasks"
+                  exact
+                  className="text-decoration-none"
+                  activeClassName="activeClass"
+                >
+                  <OverlayTrigger
+                    placement="right"
+                    delay={{ show: 250, hide: 400 }}
+                    overlay={<Tooltip id={`tooltip-dashboard`}>Tasks</Tooltip>}
+                  >
+                    <div className="menuIcon mx-auto bg-secondary">
+                      <img src={TaskImage} alt="Tasks" />
+                    </div>
+                  </OverlayTrigger>
+                </NavLink>
+              </div>
 
               {/* <div className="py-1 px-2 d-inline navLink">
               <NavLink to="/patientTrace" className="text-decoration-none" activeClassName="text-primary">Tracepatient</NavLink>
@@ -159,6 +180,8 @@ const RouterAdmin = () => {
               <Route path="/consumer" exact component={ConsumerData}></Route>
               <Route path="/provider" exact component={ProviderData}></Route>
               <Route path="/services" exact component={ServiceAdd}></Route>
+              <Route path="/categories" exact component={CategoryAdd}></Route>
+              <Route path="/tasks" exact component={TasksData}></Route>
 
               <Route
                 render={() => <Redirect to={{ pathname: "/dashbaord" }} />}

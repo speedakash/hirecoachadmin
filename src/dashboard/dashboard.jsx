@@ -1,24 +1,18 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import { useQuery, useLazyQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 import moment from "moment";
 import TaskChart from "../chart/taskChart";
 import { useHistory } from "react-router-dom";
+import TaskContext from "../context/taskContext";
+import TasksData from "../task/tasks";
 
 const FETCH_ALL_USERS = gql`
   query getUsers {
     users {
       id
-      name
-      email
       role
-      gender
-      state
-      city
-      locality
-      address
       createdAt
-      updatedAt
     }
   }
 `;
@@ -28,10 +22,10 @@ const FETCH_ALL_TASKS = gql`
     getAlltasks {
       id
       createdAt
-      updatedAt
     }
   }
 `;
+
 const Dashboard = () => {
   let history = useHistory();
   const navigateTo = (navigationPoint) => {
@@ -64,9 +58,12 @@ const Dashboard = () => {
     getAllTasks();
   }, []);
 
+  const [context, setContext] = useContext(TaskContext);
+
   let monthsArray = [];
   let countTask = {};
   if (taskData) {
+    setContext(taskData.getAlltasks.length);
     taskData.getAlltasks.map((el) => {
       monthsArray.push(moment(new Date(el.createdAt)).format("MMM"));
     });

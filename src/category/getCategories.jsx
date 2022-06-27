@@ -5,33 +5,27 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashRestore, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 const FETCH_ALL_SERVICES = gql`
-  query getServices {
-    services {
+  query getCategories {
+    categories {
       id
       name
-      category
-      iconName
-      iconPath
       status
     }
   }
 `;
 
 const UPDATE_STATUS = gql`
-  mutation updateService($id: ID!, $status: String!) {
-    updateService(id: $id, status: $status) {
+  mutation updateCategory($id: ID!, $status: String!) {
+    updateCategory(id: $id, status: $status) {
       id
       name
-      category
-      iconName
-      iconPath
       status
     }
   }
 `;
 
-const GetALLServices = (props) => {
-  const [getServices, { loading, data, error, fetchMore }] = useLazyQuery(
+const GetALLCategories = (props) => {
+  const [getCategories, { loading, data, error, fetchMore }] = useLazyQuery(
     FETCH_ALL_SERVICES,
     {
       fetchPolicy: "cache-and-network",
@@ -39,15 +33,15 @@ const GetALLServices = (props) => {
   );
 
   useEffect(() => {
-    getServices();
+    getCategories();
   }, []);
 
   const [
-    updateService,
+    updateCategory,
     { loading: updateLoading, data: updatedata, error: updateerror },
   ] = useMutation(UPDATE_STATUS);
   const changeStatus = (service) => {
-    updateService({
+    updateCategory({
       variables: {
         id: service.id,
         status: service.status === "active" ? "deactive" : "active",
@@ -57,7 +51,7 @@ const GetALLServices = (props) => {
 
   useEffect(() => {
     if (props.reloadService) {
-      getServices();
+      getCategories();
     }
   }, [props.reloadService]);
 
@@ -65,7 +59,7 @@ const GetALLServices = (props) => {
     return (
       <div className="row mt-5">
         <div className="col-12 text-center text-primary mt-5 p-5 font-weight-normal h6">
-          Services are still loading... , meanwhile you can add new service
+          Categories are still loading... , meanwhile you can add new service
         </div>
       </div>
     );
@@ -75,28 +69,18 @@ const GetALLServices = (props) => {
     return (
       <div className="col-12 py-3 px-4">
         <div className="row row mx-0 my-2 bg-primary box-shadow-secondary rounded">
-          <div className="col-1"></div>
-          <div className="col-4 text-white p-2 ln-40">Service name</div>
-          <div className="col-4 text-white p-2 ln-40">Service category</div>
-          <div className="col-3"></div>
+          <div className="col-8 text-white p-2 ln-40">Category name</div>
+          <div className="col-4"></div>
         </div>
-        {data.services.map((el, index) => {
+        {data.categories.map((el, index) => {
           return (
             <div
               className="row mx-0 my-2 bg-light rounded animated fadeInUp"
               key={index}
             >
-              <div className="col-1 p-0 ln-40">
-                <div className="p-2 w-fit-content">
-                  <img className="serviceIcon" src={el.iconPath} alt="" />
-                </div>
-              </div>
-              <div className="col-4 p-2 align-self-center ln-40">{el.name}</div>
-              <div className="col-4 p-2 align-self-center ln-40">
-                {el.category}
-              </div>
+              <div className="col-8 p-2 ln-40 align-self-center">{el.name}</div>
 
-              <div className="col-3 p-2 align-self-center ln-40 white-space-nowrap text-truncate">
+              <div className="col-4 p-2 ln-40 align-self-center">
                 <p
                   className={`cursor-pointer px-2 font-weight-normal m-0 white-space-nowrap text-truncate rounded ${
                     el.status === "active" ? "bg-pink" : "bg-green"
@@ -126,4 +110,4 @@ const GetALLServices = (props) => {
   }
 };
 
-export default GetALLServices;
+export default GetALLCategories;

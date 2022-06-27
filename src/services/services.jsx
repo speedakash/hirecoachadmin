@@ -10,6 +10,7 @@ const FETCH_ALL_CATEGORIES = gql`
   query categories {
     categories {
       name
+      status
     }
   }
 `;
@@ -143,12 +144,15 @@ const ServiceAdd = () => {
 
   if (categorydata) {
     return (
-      <div className="row">
-        <div className="col-6 align-self-center p-5">
-          <div className="row p-4 bg-green box-shadow rounded animated fadeInUp">
+      <div className="row m-0">
+        <div className="col-6 p-4">
+          <h2 className="font-bold text-primary animated fadeIn mb-4">
+            Services -
+          </h2>
+          <div className="row p-4 bg-green box-shadow rounded animated fadeInUp mt-5 mx-0">
             <div className="col-12 p-0">
-              <div className="row">
-                <div className="col-12 align-self-center">
+              <div className="row m-0">
+                <div className="col-12 p-0">
                   {/* <div className="border border-white d-inline-block p-1"></div> */}
                   <label className="custom-file-upload bg-pink text-primary text-left px-2 py-1 m-0">
                     <img
@@ -184,11 +188,13 @@ const ServiceAdd = () => {
                 >
                   <option value="">Select service category</option>
                   {categorydata.categories.map((el, index) => {
-                    return (
-                      <option key={index} value={el.name}>
-                        {el.name}
-                      </option>
-                    );
+                    if (el.status === "active") {
+                      return (
+                        <option key={index} value={el.name}>
+                          {el.name}
+                        </option>
+                      );
+                    }
                   })}
                 </select>
                 <div className="row">
@@ -222,7 +228,9 @@ const ServiceAdd = () => {
         </div>
 
         <div className="col-6">
-          <GetALLServices reloadService={reloadService}></GetALLServices>
+          <div className="row m-0 overflow-y-only vertical-height-100">
+            <GetALLServices reloadService={reloadService}></GetALLServices>
+          </div>
         </div>
       </div>
     );

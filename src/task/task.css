@@ -1,0 +1,98 @@
+.react-calendar {
+	 max-width: 100%;
+	 border: none;
+	 background: white;
+}
+ .react-calendar button {
+	 text-transform: none;
+	 background: #fff;
+	 border: none;
+	 line-height: 3rem;
+}
+ .react-calendar__navigation__next2-button, .react-calendar__navigation__prev2-button {
+	 display: none;
+}
+ .react-calendar__tile--active {
+	 background: #a06ee1 !important;
+	 color: #fff;
+	 border-radius: 0.25rem !important;
+}
+ .react-calendar__month-view__weekdays__weekday {
+	 text-align: center;
+}
+ .react-calendar__month-view__weekdays__weekday abbr {
+	 color: #a06ee1 !important;
+	 text-decoration: none !important;
+	 text-align: center;
+}
+ .max-height-200 {
+	 max-height: 200px;
+	 height: 200px;
+}
+ .word-break {
+	 word-break: break-all;
+}
+ @media only screen and (min-width: 600px) {
+	 .modal-dialog {
+		 min-width: 400px;
+	}
+}
+ .border-imported {
+	 background: rgba(255, 193, 7, 1);
+	 width: 8px;
+	 height: 8px;
+	 margin-right: 5px;
+	 border-radius: 50%;
+	 display: inline-block;
+}
+ .border-local {
+	 background: rgba(40, 167, 69, 1);
+	 width: 8px;
+	 height: 8px;
+	 margin-right: 5px;
+	 border-radius: 50%;
+	 display: inline-block;
+}
+ .border-notTracked {
+	 background: #6c757d;
+	 width: 8px;
+	 height: 8px;
+	 margin-right: 5px;
+	 border-radius: 50%;
+	 display: inline-block;
+}
+ .icon-width {
+	 width: 15px !important;
+	 height: 15px !important;
+}
+ .white-space-nowrap {
+	 white-space: nowrap;
+}
+ button:focus {
+	 outline: 0 !important;
+}
+ .legend-check {
+	 width: 10px;
+	 height: 10px;
+}
+ .pagination {
+	 display: inline-flex;
+}
+ .pagination li {
+	 width: 25px;
+	 height: 25px;
+	 background: #eccd8f;
+	 margin-left: 3px;
+	 border-radius: 2px;
+}
+ .pagination li a {
+	 line-height: 25px;
+	 color: #00233a;
+	 text-decoration: none;
+}
+ .pagination .disabled {
+	 display: none;
+}
+ .pagination .active {
+	 background: #94d3ac;
+}

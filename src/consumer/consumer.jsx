@@ -138,7 +138,7 @@ const ConsumerData = () => {
 
           <Modal.Footer className="border-0"></Modal.Footer>
         </Modal>
-        <div className="col-12 animated fadeIn">
+        <div className="col-12 animated fadeIn p-0">
           <h2 className="font-bold text-primary">Consumer details -</h2>
         </div>
 
