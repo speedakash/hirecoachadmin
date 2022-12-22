@@ -25,7 +25,7 @@
     "react-highcharts": "^16.1.0",
     "react-js-pagination": "^3.0.3",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.1"
+    "react-scripts": "5.0.1"
   },
   "scripts": {
     "predeploy": "npm run build",
