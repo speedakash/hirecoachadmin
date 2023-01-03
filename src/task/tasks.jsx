@@ -33,6 +33,8 @@ const FETCH_ALL_TASKS = gql`
       bookingSlot
       createdAt
       updatedAt
+      paymentStatus
+      paymentType
     }
   }
 `;
@@ -52,6 +54,8 @@ const FETCH_ALL_TASKS_BYDATE = gql`
       bookingSlot
       createdAt
       updatedAt
+      paymentStatus
+      paymentType
     }
   }
 `;

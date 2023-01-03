@@ -13,8 +13,14 @@
 .text-orange {
   color: #eccd8f;
 }
+.text-white{
+  color: #ffffff;
+}
 .bg-primary {
   background-color: #00233a !important;
+}
+.bg-white{
+  background-color: #ffffff;
 }
 .bg-green {
   background-color: #94d3ac;
@@ -212,3 +218,29 @@ input[type=file] {
 .z-index-9 {
   z-index: 9;
 }
+.paymentContainer{
+  width: fit-content
+}
+.paymentCardShowBlock{
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	width: 45px;
+	height: 30px;
+}
+.applepay{
+	background-image: url('./assets/images/apple_pay.svg');
+}
+.gpay{
+	background-image: url('./assets/images/g_pay.svg') ;
+}
+.paypal{
+	background-image: url('./assets/images/PayPal.svg') ;
+}
+.creditCard{
+	background-image: url('./assets/images/credit-card.png');
+}
+.cash{
+	background-image: url('./assets/images/cash.png');
+}
+

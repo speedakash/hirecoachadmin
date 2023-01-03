@@ -51,6 +51,24 @@ const selectedTask = (props) => {
             </div>
             <div className="row p-2 mx-0 mt-2">
               <div className="col-6">
+                <p className="font-weight-bold m-0">Payment Status: </p>
+                <p className="font-weight-normal m-0">
+                  {props.selectedTask.paymentStatus ? 'Paid' : 'Not-Paid'}
+                </p>
+              </div>
+              <div className="col-6">
+                <p className="font-weight-bold m-0">Payment Type: </p>
+                  <div className="d-flex align-items-center border rounded border-primary paymentContainer bg-primary">
+                    <div className={`paymentCardShowBlock p-1 rounded bg-white
+                        ${props.selectedTask.paymentType.split('-')[0] === 'online' ?  props.selectedTask.paymentType.split('-')[1] || `creditCard` : `cash`}`}></div>
+                    <p className="font-weight-light m-0 py-1 px-2  text-white logo-title">
+                      {props.selectedTask.paymentType.split('-')[0].toUpperCase()}
+                    </p>
+                  </div>
+              </div>
+            </div>
+            <div className="row p-2 mx-0 mt-2">
+              <div className="col-6">
                 <p className="font-weight-bold m-0">Booking date: </p>
                 <p className="font-weight-normal m-0">
                   {moment(new Date(props.selectedTask.bookingDate)).format(
@@ -75,7 +93,7 @@ const selectedTask = (props) => {
                 </p>
               </div>
               <div className="col-6">
-                <p className="font-weight-bold m-0">Task generated: </p>
+                <p className="font-weight-bold m-0">Task status: </p>
                 <p className="font-weight-normal m-0">
                   {props.selectedTask.status === "notstarted"
                     ? "Not Started"
