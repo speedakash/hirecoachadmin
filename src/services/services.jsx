@@ -70,7 +70,12 @@ const ServiceAdd = () => {
       data: uploadOneFiledata,
       error: uploadOneFileerror,
     },
-  ] = useMutation(UPLOAD_FILE);
+  ] = useMutation(UPLOAD_FILE,{
+    context: {
+      headers: {
+        'apollo-require-preflight': true,
+      },
+    }});
 
   const [
     addService,
